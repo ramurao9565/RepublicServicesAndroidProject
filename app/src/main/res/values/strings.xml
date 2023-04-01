@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DriverRoutes</string>
+    <string name="driversTopBarString">Drivers</string>
+    <string name="sortButtonTopBarString">sortButton</string>
+    <string name="driverIdString">driverId</string>
+    <string name="driverScreenNavString">driverScreen</string>
+</resources>
