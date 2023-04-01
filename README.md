@@ -6,9 +6,11 @@ This Android application is built using clean architecture principles and best p
 Installation
 To build and run the app, follow these steps:
 
-Clone the repository
-Open the project in Android Studio
-Build and run the app on an emulator or physical device
+Clone the repository ,
+Open the project in Android Studio ,
+Build and run the app on an emulator or physical device .
+
+
 
 Components Used :
 
