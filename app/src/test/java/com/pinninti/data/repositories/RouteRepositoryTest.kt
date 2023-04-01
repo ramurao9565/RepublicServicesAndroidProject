@@ -32,14 +32,15 @@ class RouteRepositoryTest {
         val driverId = 1
 
         val routeId = 1
-        val routesEntity = RoutesEntity(routeId, "Driver A", "R")
-        every { routeDao.getDriverByRouteId(routeId) } returns routesEntity
+        val routesEntityOne = RoutesEntity(routeId, "Driver A", "R")
+
+        every { routeDao.getDriverByRouteId(driverId) } returns routesEntityOne
 
         // When
         val result = routeRepository.getRouteForDriver(driverId)
 
         // Then
-        assertEquals(routesEntity, result)
+        assertEquals(routesEntityOne, result)
         verify(exactly = 1) { routeDao.getDriverByRouteId(driverId) }
     }
 
@@ -47,18 +48,19 @@ class RouteRepositoryTest {
     fun `when driver id is divisible by 2`() {
         // Given
         val driverId = 8
-        val routeId = 8
+
         val routeType = "R"
         every { routeDao.getDriverByRouteId(driverId) } returns null
 
-        val routesEntityA = RoutesEntity(routeId, "Driver A", routeType)
-        every { routeDao.getDriverByRouteType(routeType) } returns listOf(routesEntityA)
+        val routesEntityOne = RoutesEntity(8, "Route A", routeType)
+        val routesEntityTwo = RoutesEntity(9, "Route B", routeType)
+        every { routeDao.getDriverByRouteType(routeType) } returns listOf(routesEntityOne,routesEntityTwo)
 
         // When
         val result = routeRepository.getRouteForDriver(driverId)
 
         // Then
-        assertEquals(routesEntityA, result)
+        assertEquals(routesEntityOne, result)
         verify(exactly = 1) { routeDao.getDriverByRouteType(routeType) }
         verify(exactly = 1) { routeDao.getDriverByRouteId(driverId) }
     }
@@ -67,13 +69,16 @@ class RouteRepositoryTest {
     fun `when driver id is divisible by 5`() {
         // Given
         val driverId = 15
-        val routeId = 8
+
         val routeType = "C"
         every { routeDao.getDriverByRouteId(driverId) } returns null
 
-        val routesEntityFirstC = RoutesEntity(routeId, "Route C Type 1", routeType)
-        val routesEntitySecondC = RoutesEntity(routeId, "Route C Type 2", routeType)
-        every { routeDao.getDriverByRouteType(routeType) } returns listOf(routesEntityFirstC,routesEntitySecondC)
+        val routesEntityFirstC = RoutesEntity(8, "Route C Type 1", routeType)
+        val routesEntitySecondC = RoutesEntity(9, "Route C Type 2", routeType)
+        every { routeDao.getDriverByRouteType(routeType) } returns listOf(
+            routesEntityFirstC,
+            routesEntitySecondC
+        )
 
         // When
         val result = routeRepository.getRouteForDriver(driverId)
@@ -88,14 +93,17 @@ class RouteRepositoryTest {
     fun `when driver id doesn't meet any of the above conditions`() {
         // Given
         val driverId = 13
-        val routeId = 8
+
         val routeType = "I"
         every { routeDao.getDriverByRouteId(driverId) } returns null
 
-        val routesEntityFirstI = RoutesEntity(routeId, "Route C Type 1", routeType)
-        val routesEntitySecondI = RoutesEntity(routeId, "Route C Type 2", routeType)
+        val routesEntityFirstI = RoutesEntity(8, "Route I Type 1", routeType)
+        val routesEntitySecondI = RoutesEntity(9, "Route I Type 2", routeType)
 
-        every { routeDao.getDriverByRouteType(routeType) } returns listOf(routesEntityFirstI,routesEntitySecondI)
+        every { routeDao.getDriverByRouteType(routeType) } returns listOf(
+            routesEntityFirstI,
+            routesEntitySecondI
+        )
 
         // When
         val result = routeRepository.getRouteForDriver(driverId)

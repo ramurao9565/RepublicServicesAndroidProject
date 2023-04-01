@@ -79,9 +79,9 @@ fun DriversScreen(
                                             navController.navigate("routeScreen/${entity.id}")
                                         }
                                         .fillMaxSize()
-                                        .padding(8.dp))
+                                        .padding(16.dp))
                                 Divider(
-                                    modifier = Modifier.padding(vertical = 18.dp), thickness = 2.dp
+                                    modifier = Modifier.padding(vertical = 4.dp), thickness = 2.dp
                                 )
                             }
                         }

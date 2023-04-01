@@ -61,7 +61,7 @@ class DriverScreenViewModel @Inject constructor(private val driverRepository: Dr
                 }
             } catch (e: Exception) {
                 uiState.value =
-                    DriverUiState.Error("There is some issue Loading Drivers . ${e.localizedMessage ?: ""}")
+                    DriverUiState.Error("There is some issue Loading Drivers List. ")
             }
         }
     }

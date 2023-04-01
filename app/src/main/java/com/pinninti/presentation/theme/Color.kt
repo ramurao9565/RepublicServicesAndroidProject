@@ -1,4 +1,4 @@
-package com.pinninti.ui.theme
+package com.pinninti.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -19,7 +19,7 @@ import com.pinninti.presentation.components.DriversScreen
 import com.pinninti.presentation.components.RouteScreen
 import com.pinninti.presentation.viewmodels.DriverScreenViewModel
 import com.pinninti.presentation.viewmodels.RouteViewModel
-import com.pinninti.ui.theme.DriverRoutesTheme
+import com.pinninti.presentation.theme.DriverRoutesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
